@@ -74,11 +74,12 @@ manifest_init() {
 }
 
 manifest_record() {
-  local src dest hash entry
+  local src dest hash method entry
   src="$(_json_escape "$1")"
   dest="$(_json_escape "$2")"
   hash="$(_json_escape "$3")"
-  entry=$(printf '{"src":"%s","dest":"%s","hash":"%s","ts":"%s"}' \
-    "$src" "$dest" "$hash" "$(date -u +%Y-%m-%dT%H:%M:%SZ)")
+  method="$(_json_escape "${4:-symlink}")"
+  entry=$(printf '{"src":"%s","dest":"%s","hash":"%s","method":"%s","ts":"%s"}' \
+    "$src" "$dest" "$hash" "$method" "$(date -u +%Y-%m-%dT%H:%M:%SZ)")
   [[ "$DRY_RUN" == 1 ]] || echo "$entry" >> "$MANIFEST_FILE"
 }
