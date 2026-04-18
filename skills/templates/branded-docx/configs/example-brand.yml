@@ -1,0 +1,107 @@
+# example-brand.yml — Schema for the branded-docx skill
+# Copy this file to configs/<your-company>.yml and replace every value.
+# Files matching configs/*.yml are gitignored; your real brand data stays local.
+#
+# All color values MUST be hex strings including the leading "#".
+# All font values are strings matching installed Word font families.
+
+# ---------- Company Identity ----------
+company:
+  name: "Acme Widgets, Inc."          # legal / display name shown on cover pages + signatures
+  name_short: "Acme Widgets"          # short form for headers, footers, header strips
+  domain: "acmewidgets.example"       # used in footer + confidentiality line
+  tagline: "Widgets. Perfected."      # optional; shown under title on cover pages. Set "" to omit.
+  confidentiality_line: "Confidential \u2014 Acme Widgets, Inc."  # footer text; em-dash allowed
+
+# Document categories this brand regularly produces.
+# The skill uses this to pick default structure templates.
+document_types:
+  - reports
+  - memos
+  - playbooks
+  - proposals
+  - one-pagers
+  - agreements
+  - audits
+
+# ---------- Color Palette ----------
+# Every hex is a 6-char code with leading "#".
+# Verify every text/background pair against WCAG 2.1 AA (4.5:1 contrast) before committing.
+colors:
+  primary:
+    hex: "#3A5FCD"                    # primary accent: H1, table headers, primary dividers
+    name: "Acme Indigo"               # human-readable brand name for this color
+  accent:
+    hex: "#7FC24B"                    # accent: H2, callout borders, success indicators, divider caps
+    name: "Widget Lime"
+  secondary:
+    hex: "#2FB8C6"                    # tertiary accent: H3, action callouts, lighter highlights
+    name: "Gear Teal"
+  text_dark: "#22252B"                # body text (NEVER pure #000000)
+  text_muted: "#6B7280"               # footnotes, captions, footer lines
+  background_light: "#F2F5FF"         # alternating table rows, key-value label backgrounds, light fills
+  callout_bg_info: "#EAF0FF"          # info callout fill (tint of primary)
+  callout_bg_success: "#EEF9E4"       # success callout fill (tint of accent)
+  warning_border: "#D19B2F"           # warning callout border + title color
+  warning_bg: "#FFF7E0"               # warning callout fill
+  white: "#FFFFFF"                    # page background; usually #FFFFFF, configurable for off-white brands
+  border_light: "#CCCCCC"             # thin gray border on data table cells
+
+# ---------- Typography ----------
+fonts:
+  heading: "Source Sans 3"            # display font; used for H1/H2/H3/title/callout title/pull quote
+  body: "Source Sans 3"               # body text; often the same family as heading
+  body_fallback: "Arial"              # widely-available fallback; embedded for environments missing body font
+  mono: "Fira Mono"                   # optional monospace for codes/IDs/tabular figures; set "" to omit
+  psychology_note: |                  # optional paragraph explaining font choice; shown in brand briefs
+    Source Sans 3 is Adobe's open-source humanist sans-serif. Its strong character
+    discrimination (I vs l vs 1; 0 vs O) and relaxed terminals project competence
+    and accessibility simultaneously — Acme's "engineered but approachable" voice.
+
+# ---------- Logo Variants ----------
+# List of logo files the brand team maintains. The skill references these by label
+# in cover-page instructions; actual image files are supplied at document-generation time.
+logo_variants:
+  - label: "Full Lockup"
+    usage: "Websites, presentations, large print, cover pages"
+  - label: "Monogram"
+    usage: "App icons, seals, badges, small square placements"
+  - label: "Monochrome"
+    usage: "Embossing, faxes, low-contrast backgrounds"
+  - label: "Reverse"
+    usage: "On dark backgrounds (light logo on {{BRAND_COLOR_PRIMARY}} or black)"
+
+# ---------- Document Framing ----------
+# Templates described in natural language — the skill uses these to decide header/footer wording.
+# Variables in double braces {{...}} are resolved to values elsewhere in this config.
+templates:
+  header: |
+    Right-aligned, italic, {{BRAND_COLOR_PRIMARY}}, size 16.
+    Text: "{{COMPANY_NAME_SHORT}}" (bold) + "  |  " + "[Document Title]  |  [Date]" (muted italic).
+    Bottom border: 2pt solid {{BRAND_COLOR_PRIMARY}}.
+
+  footer: |
+    Centered, size 15, {{BRAND_COLOR_TEXT_MUTED}}.
+    Text: "{{COMPANY_DOMAIN}}  |  Page X of Y  |  {{CONFIDENTIALITY_LINE}}".
+    Top border: 2pt solid {{BRAND_COLOR_ACCENT}}.
+
+  signature_block: |
+    Page break. "SIGNATURES" heading centered, size 32, bold, {{BRAND_COLOR_PRIMARY}}.
+    Divider below. Body paragraph ("IN WITNESS WHEREOF...").
+    Company section: "{{COMPANY_NAME}}" in size 24 bold {{BRAND_COLOR_PRIMARY}}, then
+      "Signature: ____", "Name: [Name]" (bold label), "Title: [Title]" (bold label), "Date: ____".
+    300 DXA spacing. Counterparty section: "[COUNTERPARTY ROLE]" size 24 bold {{BRAND_COLOR_PRIMARY}},
+      then four blank lines for Signature / Name / Title / Date.
+    400 DXA spacing. Divider. "END OF AGREEMENT" centered, italic, size 20, {{BRAND_COLOR_PRIMARY}}.
+    Version line: "{{COMPANY_NAME}} \u2014 [Doc Type] v[X]" centered, italic, size 18, {{BRAND_COLOR_TEXT_MUTED}}.
+
+# ---------- Style Conventions ----------
+# Document-wide conventions that may vary between brands.
+conventions:
+  table_alignment: "leftmost-label"   # options: "leftmost-label" (col 0 left, rest centered) | "center-all"
+  h1_case: "UPPERCASE"                # options: "UPPERCASE" | "Title Case" | "Sentence case"
+  h2_case: "Title Case"
+  body_text_never_black: true         # MUST be true; body uses text_dark, not #000000
+  alternating_rows_threshold: 4       # data tables with >= N rows use alternating fills
+  page_size: "Letter"                 # options: "Letter" | "A4"
+  language: "en-US"                   # docx Document `language` attribute for accessibility

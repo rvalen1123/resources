@@ -1,0 +1,5 @@
+# Local company config files — never commit real brand data
+*.yml
+*.yaml
+!example-brand.yml
+!example-brand.yaml
