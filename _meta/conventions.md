@@ -21,7 +21,7 @@ tags: [tag1, tag2]
 
 ## Topic READMEs
 
-Every topic's `notes/README.md` serves dual purpose:
+Each topic has a short `<topic>/README.md` describing what lives there. When a topic's `notes/` grows enough to need its own index, add a `<topic>/notes/README.md` that serves dual purpose:
 
 1. Index of local notes (TOC)
 2. Annotated reading list — external links with 1-line takeaway each
