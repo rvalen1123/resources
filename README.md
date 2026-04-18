@@ -2,8 +2,6 @@
 
 Personal curated library for AI agent development: Claude Code, Codex, Skills, MCP, and agent theory. Double-purpose as a reference library and an idempotent bootstrap for any new machine.
 
-See `docs/plans/2026-04-17-resources-repo-design.md` for the design rationale.
-
 ## Layout
 
 - `claude-code/` — Claude Code CLI templates and notes

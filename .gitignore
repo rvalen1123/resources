@@ -16,3 +16,6 @@ credentials/
 # Bootstrap state (per-machine, never shared)
 bootstrap/.local-state/
 *.bak-*
+
+# Plan / scaffolding artifacts (author's working docs, not repo content)
+docs/
