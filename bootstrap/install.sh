@@ -16,7 +16,7 @@ Flags:
   --dry-run              Preview actions without changing the filesystem.
   --verbose, -v          Extra logging.
   --only LIST            Comma-separated subset: claude-code,codex,skills,mcp.
-                         Default: all four.
+                         Also accepts --only=LIST. Default: all four.
   --safe                 Conflict mode: back up existing files (DEFAULT).
   --skip-conflicts       Conflict mode: leave existing files alone.
   --force                Conflict mode: overwrite without backup.
@@ -34,8 +34,12 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --dry-run)         export DRY_RUN=1 ;;
     --verbose|-v)      export VERBOSE=1 ;;
+    --only=*)          ONLY="${1#--only=}" ;;
     --only)
-      if [[ $# -lt 2 ]]; then err "--only requires an argument"; exit 2; fi
+      if [[ $# -lt 2 || -z "$2" ]]; then
+        err "--only requires a non-empty argument (e.g. --only claude-code,mcp)"
+        exit 2
+      fi
       ONLY="$2"; shift ;;
     --safe)            export CONFLICT_MODE=safe ;;
     --skip-conflicts)  export CONFLICT_MODE=skip-conflicts ;;
@@ -104,7 +108,8 @@ for t in "${TOPICS[@]}"; do
       rc_overall=2
     fi
   else
-    warn "no installer for topic: $t"
+    err "missing installer: install-$t.sh (expected in $(dirname "$0"))"
+    rc_overall=2
   fi
 done
 
