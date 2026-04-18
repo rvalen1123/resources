@@ -19,3 +19,7 @@ bootstrap/.local-state/
 
 # Plan / scaffolding artifacts (author's working docs, not repo content)
 docs/
+
+# Local Claude Code project state (this repo is a library, not a CC-using project)
+.claude/
+
