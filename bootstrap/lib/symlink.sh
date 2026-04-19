@@ -46,13 +46,18 @@ safe_link() {
   fi
 
   # Layer 2: regular file with matching content.
-  # Remove it and fall through to the unified install block so the manifest
-  # records this entry (previously Layer 2 returned early and left no trace).
+  # In real mode: remove it and fall through to the unified install block so the
+  # manifest records this entry.
+  # In dry-run mode: log the upgrade intent and return — don't fall through to
+  # Layer 3 (which would spuriously report a conflict) or the install block.
   if [[ -f "$dest" && ! -L "$dest" ]]; then
     if [[ "$(file_sha256 "$src")" == "$(file_sha256 "$dest")" ]]; then
       log "content matches; upgrading to symlink: $dest"
-      [[ "$DRY_RUN" == 1 ]] || rm "$dest"
-      # fall through to install block
+      if [[ "$DRY_RUN" == 1 ]]; then
+        return 0
+      fi
+      rm "$dest"
+      # fall through to install block for the real install + manifest record
     fi
   fi
 
