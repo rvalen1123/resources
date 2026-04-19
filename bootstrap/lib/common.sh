@@ -32,6 +32,15 @@ detect_os() {
   esac
 }
 
+# On Windows Git Bash / MSYS, `ln -s` silently copies instead of creating real
+# symlinks unless MSYS is configured to use native Windows symlinks AND Windows
+# Developer Mode is enabled. We auto-set the flag so users don't have to
+# remember it; if dev mode is off, `ln -s` will still fail and our _do_link
+# fallback in symlink.sh will copy with a WARN (the pre-existing degraded mode).
+if [[ "$(detect_os)" == "windows" ]]; then
+  export MSYS="${MSYS:+$MSYS }winsymlinks:nativestrict"
+fi
+
 # --- File hash ---
 # NOTE: Returns empty string + success (0) on missing file. This contract is
 # load-bearing: callers under `set -e` compare hashes via command substitution

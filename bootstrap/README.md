@@ -59,9 +59,21 @@ Enables `--status` (report current state) and `--uninstall` (safe removal).
 
 ## Windows notes
 
-Symlink creation on Windows requires **Developer Mode** (Settings → Privacy & Security → For Developers). Without it, the installer falls back to copying and records `"method":"copy"` in the manifest — still fully functional, just not a live link. Dedup Layer 2 means re-runs remain idempotent either way.
+For real symlinks on Windows you need **both**:
 
-Enable dev mode for the best experience; Git Bash's `ln -s` will then produce real symlinks.
+1. **Developer Mode** enabled (Settings → Privacy & Security → For Developers).
+2. Git Bash's `MSYS=winsymlinks:nativestrict` flag set so MSYS uses native Windows symlinks instead of copies.
+
+The bootstrap **sets flag #2 automatically** when it detects a Windows Git Bash / MSYS environment (see `lib/common.sh`). You only need to enable Developer Mode.
+
+If Developer Mode is off, `ln -s` falls back to copying, recording `"method":"copy"` in the manifest with a WARN. Install still works — just not a live link. Re-runs remain idempotent via dedup Layer 2.
+
+To verify native symlinks are working after a real install:
+
+```bash
+ls -la ~/.claude/skills/<any-skill>/SKILL.md    # should show "file -> /path/to/resources/..."
+bash bootstrap/install.sh --status              # method column should show "symlink"
+```
 
 ## Adding a new topic installer
 
