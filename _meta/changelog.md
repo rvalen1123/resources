@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-04-19
+
+### Added
+- `claude-code/templates/` — portable `settings.json` (statusLine has bun→node fallback), starter `AGENTS.md` + `CLAUDE.md`, example hook (on-stop log writer), example slash command (`/summary`), example subagent (code-reviewer). Plus READMEs for each subdir.
+- `claude-code/notes/` — README reading list + `settings-and-plugins.md`, `hooks-and-automation.md`, `agents-md-patterns.md`.
+- `codex/templates/` — portable `config.toml` (project-specific paths stripped) + starter `AGENTS.md`.
+- `codex/notes/` — README + `config-patterns.md`, `agents-md-for-codex.md`.
+- `mcp/templates/` — `server-typescript/` + `server-python/` minimal stdio server starters, curated `servers.txt` (11 public MCP servers), READMEs.
+- `mcp/notes/` — README + `mcp-fundamentals.md`, `building-a-server.md`, `debugging-mcp.md`.
+- `agent-theory/notes/` — README + `react-pattern.md`, `multi-agent-orchestration.md`, `memory-systems.md`, `rag-patterns.md`, `evaluating-agents.md`.
+- `skills/notes/` — README + `when-to-write-a-skill.md`, `skill-design-principles.md`, `skill-anti-patterns.md`, `distilling-from-practice.md`.
+
+### Fixed / Changed
+- `bootstrap/lib/common.sh`: auto-set `MSYS=winsymlinks:nativestrict` on Windows so `ln -s` produces real symlinks (with Dev Mode on) instead of silently copying. `bootstrap/README.md` updated to document the full Windows setup.
+- Re-ran `install.sh` across all topics — every manifest entry is now `method:"symlink"` (89/89) instead of the prior `"copy"` entries.
+
 ## 2026-04-18
 
 ### Added

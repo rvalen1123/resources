@@ -1,0 +1,50 @@
+# NOTE: This is a template config.toml for the Codex CLI (installed to
+# ~/.codex/config.toml). Before using it, review the fields below for your
+# environment:
+#   - `model` / `model_reasoning_effort`: pick the model and effort level you
+#     have access to. `xhigh` is slow and expensive; most users want `medium`.
+#   - `personality`: tweak to taste (`pragmatic`, `concise`, `thorough`, etc.).
+#   - `sandbox_mode`: `danger-full-access` lets Codex touch any path and run
+#     any command with no confirmation. That's convenient on a trusted dev
+#     box, but it is NOT safe on shared machines or in CI. Prefer
+#     `workspace-write` or `read-only` if you're unsure. See the note under
+#     codex/notes/config-patterns.md for the trade-offs.
+#   - `mcp_servers`: the `MCP_DOCKER` block below assumes you have Docker
+#     Desktop's MCP gateway running. Remove or swap it if you use a different
+#     MCP setup.
+#   - `plugins`: the OpenAI-curated plugin list below is a reasonable starting
+#     point. Comment out anything you do not use.
+
+model = "gpt-5.4"
+model_reasoning_effort = "xhigh"
+personality = 'pragmatic'
+sandbox_mode = 'danger-full-access'
+
+[features]
+multi_agent = true
+memories = true
+
+[mcp_servers]
+[mcp_servers.MCP_DOCKER]
+command = 'docker.exe'
+args = ['mcp', 'gateway', 'run']
+
+[sandbox_workspace_write]
+network_access = true
+
+[windows]
+
+[plugins."build-web-apps@openai-curated"]
+enabled = true
+
+[plugins."build-ios-apps@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."teams@openai-curated"]
+enabled = true
+
+[plugins."outlook-email@openai-curated"]
+enabled = true

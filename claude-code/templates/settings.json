@@ -1,0 +1,21 @@
+{
+  "_note": "Template settings.json for ~/.claude/settings.json. The bootstrap script symlinks this into place. Review statusLine before use — it tries `bun` first, falls back to `node`. If you have neither, remove the statusLine block or install one. The enabledPlugins list is the author's preferred set and is kept here as reference material; prune what you don't want.",
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'plugin_dir=$(ls -d \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\"/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | awk -F/ '\"'\"'{ print $(NF-1) \"\\t\" $0 }'\"'\"' | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1 | cut -f2-); if command -v bun >/dev/null 2>&1; then exec bun \"${plugin_dir}src/index.ts\"; else exec node \"${plugin_dir}src/index.ts\"; fi'"
+  },
+  "enabledPlugins": {
+    "claude-supermemory@supermemory-plugins": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "agent-sdk-dev@claude-plugins-official": true,
+    "semgrep@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "firecrawl@claude-plugins-official": true,
+    "claude-hud@claude-hud": true
+  }
+}

@@ -1,0 +1,26 @@
+# Curated MCP servers.
+#
+# Format (one per line, pipes as delimiters):
+#   <short-name> | <one-line description> | <install command>
+#
+# Lines starting with `#` are comments. Blank lines are ignored.
+# `[env: VAR]` markers call out required environment variables.
+#
+# NOTE: bootstrap/install-mcp.sh only LOGS this file — it does NOT auto-register
+# any of these servers. Pick the ones you want and run the install command
+# yourself, substituting env vars where needed.
+#
+# All entries below are publicly available, widely useful servers. Anything
+# private/internal belongs in your own notes, not here.
+
+filesystem | Read/write files under allowed roots (official). | claude mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /path/to/allowed/root
+fetch | Fetch a URL and return cleaned text/markdown (official). | claude mcp add fetch -- npx -y @modelcontextprotocol/server-fetch
+git | Read/search a local git repo: log, diff, blame, show (official). | claude mcp add git -- npx -y @modelcontextprotocol/server-git --repository /path/to/repo
+github | GitHub issues, PRs, code search, file contents (official). [env: GITHUB_PERSONAL_ACCESS_TOKEN] | claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PERSONAL_ACCESS_TOKEN -- npx -y @modelcontextprotocol/server-github
+memory | Persistent knowledge-graph memory across sessions (official). | claude mcp add memory -- npx -y @modelcontextprotocol/server-memory
+playwright | Headless browser automation: navigate, click, type, screenshot (official). | claude mcp add playwright -- npx -y @modelcontextprotocol/server-playwright
+puppeteer | Alternative headless-browser automation via Puppeteer (official). | claude mcp add puppeteer -- npx -y @modelcontextprotocol/server-puppeteer
+postgres | Read-only SQL access to a Postgres database (official). [env: DATABASE_URL] | claude mcp add postgres --env DATABASE_URL=$DATABASE_URL -- npx -y @modelcontextprotocol/server-postgres
+sqlite | Read/write SQL access to a local SQLite database (official). | claude mcp add sqlite -- npx -y @modelcontextprotocol/server-sqlite --db-path /path/to/db.sqlite
+time | Timezone-aware current time and conversions (official). | claude mcp add time -- npx -y @modelcontextprotocol/server-time
+sequential-thinking | Structured step-by-step reasoning scratchpad (official). | claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
