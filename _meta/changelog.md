@@ -4,6 +4,9 @@
 
 ### Added — bleeding-edge Q1-Q2 2026 sweep
 - `claude-code/notes/claude-code-2026-features.md` — Q1-Q2 2026 changelog highlights: Opus 4.7 + `xhigh`, `/recap`, `/tui`, Monitor tool, subprocess sandboxing, MCP 500K result size override, built-in-slash-command invocation via the Skill tool.
+- `claude-code/notes/prompt-caching-tiers.md` — full distilled reference for 5-minute vs 1-hour caching: pricing multipliers (1.25× vs 2× write, 0.1× read), invalidation rules, breakpoint mechanics, per-model minimums, Claude Code env vars (`ENABLE_PROMPT_CACHING_1H`, `FORCE_PROMPT_CACHING_5M`), when each tier actually pays off.
+- `claude-code/notes/monitor-tool-pattern.md` — streaming events from background processes; 4 workflow patterns (dispatch-many-monitor-each, log-tail-with-triggers, build-test-deploy chain, background-agent-with-cancel); interaction with ScheduleWakeup / TaskStop.
+- `skills/notes/skill-authoring-patterns.md` — full writeup of the 14 Anthropic skill-authoring patterns across 5 categories (Discovery, Context Economy, Instruction Calibration, Workflow Control, Executable Code). Each pattern gets a rule, a violation signal, a concrete example, and trade-offs.
 - `agent-theory/notes/memory-landscape-2026.md` — map of the 4 active agent-memory research threads (A-MEM / AgeMem / Mem0 / governance) and how they relate to the author's CT/STG-EUT work.
 
 ### Updated — reading lists
@@ -11,8 +14,9 @@
 - `mcp/notes/README.md` — adds Official MCP Registry, 2026 roadmap, and The New Stack commentary on production pain points.
 - `agent-theory/notes/README.md` — adds 6 recent agent-memory papers (A-MEM 2502.12110, AgeMem 2601.01885, Memory survey 2512.13564, Mem0 2504.19413, personalized-LTM 2510.07925, experience-following 2505.16067) plus the Agent-Memory-Paper-List bibliography.
 - `codex/notes/README.md` — adds GPT-5.4 / Codex-Spark / 90+ plugins / Triggers / FS-aware AGENTS.md; adds a "2026 features at a glance" section.
-- `skills/notes/README.md` — adds skill-authoring best-practices essays (Generative Programmer, Anthropic engineering), awesome-agent-skills (VoltAgent + skillmatic-ai).
+- `skills/notes/README.md` — adds skill-authoring best-practices essays (Generative Programmer, Anthropic engineering), awesome-agent-skills (VoltAgent + skillmatic-ai), and the large community marketplaces (agentskill.sh with 44k+ skills + two-layer security scanning; SkillsMP curated).
 - `skills/notes/skill-design-principles.md` — new subsections "Be pushy (Claude under-triggers)" and "Rule + rationale beats ALL CAPS MUST" per Anthropic's skill authoring patterns.
+- `claude-code/notes/README.md` — adds TOC entries for `prompt-caching-tiers.md` and `monitor-tool-pattern.md`.
 
 ## 2026-04-19
 

@@ -8,6 +8,8 @@ Reading list and distilled notes on getting the most out of Claude Code.
 - [hooks-and-automation.md](hooks-and-automation.md) — when to reach for hooks vs slash commands vs subagents
 - [agents-md-patterns.md](agents-md-patterns.md) — effective AGENTS.md / CLAUDE.md patterns
 - [claude-code-2026-features.md](claude-code-2026-features.md) — Q1–Q2 2026 changelog highlights worth knowing
+- [prompt-caching-tiers.md](prompt-caching-tiers.md) — 5-minute vs 1-hour cache; pricing math, invalidation rules, when each pays off
+- [monitor-tool-pattern.md](monitor-tool-pattern.md) — streaming events from background processes; replaces poll loops with react-per-line
 
 ## Reading list
 
