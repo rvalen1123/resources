@@ -2,7 +2,14 @@
 
 ## 2026-04-19
 
-### Added
+### Added — research papers
+- `agent-theory/papers/` — markdown renderings of four Zenodo-published papers by the author on AI memory governance: **Crystallization Theory v2.1** (main body only; appendices at Zenodo), **KEOS v1.0**, **Mortal Knowledge Protocol v1.2**, **STG-EUT v1.0**. Cover art, figures, and architecture diagrams extracted as JPEG/PNG alongside each paper directory. README.md documents the cross-paper dependency graph, patent portfolio, and suggested reading order.
+
+### Fixed — bootstrap v1.1
+- `manifest_record` now dedups identical `(src, dest, hash, method)` entries instead of appending on every re-run. Fixes Windows-no-dev-mode manifest bloat.
+- `safe_link` Layer 2 upgrade-to-symlink short-circuits in dry-run — emits one log line instead of three (previously also tripped Layer 3 conflict branch and install log).
+
+### Added — content fill
 - `claude-code/templates/` — portable `settings.json` (statusLine has bun→node fallback), starter `AGENTS.md` + `CLAUDE.md`, example hook (on-stop log writer), example slash command (`/summary`), example subagent (code-reviewer). Plus READMEs for each subdir.
 - `claude-code/notes/` — README reading list + `settings-and-plugins.md`, `hooks-and-automation.md`, `agents-md-patterns.md`.
 - `codex/templates/` — portable `config.toml` (project-specific paths stripped) + starter `AGENTS.md`.

@@ -88,6 +88,19 @@ manifest_record() {
   dest="$(_json_escape "$2")"
   hash="$(_json_escape "$3")"
   method="$(_json_escape "${4:-symlink}")"
+
+  # Dedup: if an entry with the same src, dest, hash, method already exists, skip.
+  # We match on a distinctive substring (the src+dest+hash+method tuple) rather than
+  # full-line equality to ignore the changing ts field.
+  if [[ "$DRY_RUN" != 1 && -f "$MANIFEST_FILE" ]]; then
+    local needle
+    needle="\"src\":\"${src}\",\"dest\":\"${dest}\",\"hash\":\"${hash}\",\"method\":\"${method}\""
+    if grep -qF "$needle" "$MANIFEST_FILE"; then
+      vlog "manifest: entry exists for $dest — skip record"
+      return 0
+    fi
+  fi
+
   entry=$(printf '{"src":"%s","dest":"%s","hash":"%s","method":"%s","ts":"%s"}' \
     "$src" "$dest" "$hash" "$method" "$(date -u +%Y-%m-%dT%H:%M:%SZ)")
   [[ "$DRY_RUN" == 1 ]] || echo "$entry" >> "$MANIFEST_FILE"
