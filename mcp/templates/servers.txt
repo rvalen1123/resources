@@ -12,15 +12,76 @@
 #
 # All entries below are publicly available, widely useful servers. Anything
 # private/internal belongs in your own notes, not here.
+#
+# Discovery: the official registry at https://registry.modelcontextprotocol.io/
+# is the broader catalog. This file is an opinionated short-list; the registry
+# has hundreds more.
 
-filesystem | Read/write files under allowed roots (official). | claude mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /path/to/allowed/root
-fetch | Fetch a URL and return cleaned text/markdown (official). | claude mcp add fetch -- npx -y @modelcontextprotocol/server-fetch
-git | Read/search a local git repo: log, diff, blame, show (official). | claude mcp add git -- npx -y @modelcontextprotocol/server-git --repository /path/to/repo
-github | GitHub issues, PRs, code search, file contents (official). [env: GITHUB_PERSONAL_ACCESS_TOKEN] | claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PERSONAL_ACCESS_TOKEN -- npx -y @modelcontextprotocol/server-github
-memory | Persistent knowledge-graph memory across sessions (official). | claude mcp add memory -- npx -y @modelcontextprotocol/server-memory
-playwright | Headless browser automation: navigate, click, type, screenshot (official). | claude mcp add playwright -- npx -y @modelcontextprotocol/server-playwright
-puppeteer | Alternative headless-browser automation via Puppeteer (official). | claude mcp add puppeteer -- npx -y @modelcontextprotocol/server-puppeteer
-postgres | Read-only SQL access to a Postgres database (official). [env: DATABASE_URL] | claude mcp add postgres --env DATABASE_URL=$DATABASE_URL -- npx -y @modelcontextprotocol/server-postgres
-sqlite | Read/write SQL access to a local SQLite database (official). | claude mcp add sqlite -- npx -y @modelcontextprotocol/server-sqlite --db-path /path/to/db.sqlite
-time | Timezone-aware current time and conversions (official). | claude mcp add time -- npx -y @modelcontextprotocol/server-time
-sequential-thinking | Structured step-by-step reasoning scratchpad (official). | claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
+# ─── Reference servers (first-party @modelcontextprotocol) ───
+
+filesystem | Read/write files under allowed roots. | claude mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /path/to/allowed/root
+fetch | Fetch a URL and return cleaned text/markdown. | claude mcp add fetch -- npx -y @modelcontextprotocol/server-fetch
+git | Read/search a local git repo: log, diff, blame, show. | claude mcp add git -- npx -y @modelcontextprotocol/server-git --repository /path/to/repo
+memory | Persistent knowledge-graph memory across sessions. | claude mcp add memory -- npx -y @modelcontextprotocol/server-memory
+sequential-thinking | Structured step-by-step reasoning scratchpad. | claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequentialthinking
+time | Timezone-aware current time and conversions. | claude mcp add time -- npx -y @modelcontextprotocol/server-time
+everything | Reference/test server demonstrating prompts, resources, and tools (educational). | claude mcp add everything -- npx -y @modelcontextprotocol/server-everything
+
+# ─── Source control / code hosting (archived from official repo; still widely used) ───
+
+github | GitHub issues, PRs, code search, file contents. [env: GITHUB_PERSONAL_ACCESS_TOKEN] | claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PERSONAL_ACCESS_TOKEN -- npx -y @modelcontextprotocol/server-github
+gitlab | GitLab issues, MRs, project operations. [env: GITLAB_PERSONAL_ACCESS_TOKEN] | claude mcp add gitlab --env GITLAB_PERSONAL_ACCESS_TOKEN=$GITLAB_PERSONAL_ACCESS_TOKEN -- npx -y @modelcontextprotocol/server-gitlab
+
+# ─── Databases ───
+
+postgres | Read-only SQL access to a Postgres database. [env: DATABASE_URL] | claude mcp add postgres --env DATABASE_URL=$DATABASE_URL -- npx -y @modelcontextprotocol/server-postgres
+sqlite | Read/write SQL access to a local SQLite database. | claude mcp add sqlite -- npx -y @modelcontextprotocol/server-sqlite --db-path /path/to/db.sqlite
+redis | Key/value + Redis Streams access. [env: REDIS_URL] | claude mcp add redis --env REDIS_URL=$REDIS_URL -- npx -y @modelcontextprotocol/server-redis
+
+# ─── Web / browser automation ───
+
+playwright | Headless browser automation: navigate, click, type, screenshot. | claude mcp add playwright -- npx -y @modelcontextprotocol/server-playwright
+puppeteer | Alternative headless-browser automation via Puppeteer. | claude mcp add puppeteer -- npx -y @modelcontextprotocol/server-puppeteer
+browserbase | Remote headless browsers as a service (cloud). [env: BROWSERBASE_API_KEY, BROWSERBASE_PROJECT_ID] | claude mcp add browserbase --env BROWSERBASE_API_KEY=$BROWSERBASE_API_KEY --env BROWSERBASE_PROJECT_ID=$BROWSERBASE_PROJECT_ID -- npx -y @browserbasehq/mcp
+
+# ─── Dev tooling — CI / observability / issues ───
+
+sentry | Read Sentry issues, error reports, stack traces. [env: SENTRY_AUTH_TOKEN] | claude mcp add sentry --env SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN -- npx -y @sentry/mcp-server
+linear | Linear issues, cycles, projects; create and update tickets. [env: LINEAR_API_KEY] | claude mcp add linear --env LINEAR_API_KEY=$LINEAR_API_KEY -- npx -y mcp-linear
+jira | Jira tickets read/update. [env: JIRA_API_TOKEN, JIRA_EMAIL, JIRA_BASE_URL] | claude mcp add jira --env JIRA_API_TOKEN=$JIRA_API_TOKEN --env JIRA_EMAIL=$JIRA_EMAIL --env JIRA_BASE_URL=$JIRA_BASE_URL -- npx -y mcp-atlassian
+
+# ─── Cloud / infrastructure ───
+
+aws-kb | AWS Bedrock knowledge-base retrieval. [env: AWS_REGION, AWS credentials] | claude mcp add aws-kb -- npx -y @modelcontextprotocol/server-aws-kb-retrieval
+cloudflare | Cloudflare Workers / KV / R2 / DNS management. [env: CLOUDFLARE_API_TOKEN] | claude mcp add cloudflare --env CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN -- npx -y @cloudflare/mcp-server-cloudflare
+kubernetes | Read k8s resources, describe pods, tail logs. [env: KUBECONFIG] | claude mcp add kubernetes -- npx -y mcp-server-kubernetes
+
+# ─── Cloud storage / productivity ───
+
+google-drive | Google Drive files; search, read, export. [env: GDRIVE_CREDENTIALS] | claude mcp add gdrive -- npx -y @modelcontextprotocol/server-gdrive
+notion | Read/write Notion pages and databases. [env: NOTION_API_KEY] | claude mcp add notion --env NOTION_API_KEY=$NOTION_API_KEY -- npx -y mcp-server-notion
+slack | Read/post Slack messages; search channels. [env: SLACK_BOT_TOKEN] | claude mcp add slack --env SLACK_BOT_TOKEN=$SLACK_BOT_TOKEN -- npx -y @modelcontextprotocol/server-slack
+
+# ─── Web search / enrichment ───
+
+brave-search | Web search via Brave Search API. [env: BRAVE_API_KEY] | claude mcp add brave-search --env BRAVE_API_KEY=$BRAVE_API_KEY -- npx -y @modelcontextprotocol/server-brave-search
+perplexity | Perplexity web search with answer summarization. [env: PERPLEXITY_API_KEY] | claude mcp add perplexity --env PERPLEXITY_API_KEY=$PERPLEXITY_API_KEY -- npx -y server-perplexity-ask
+context7 | Up-to-date library documentation by name/version (Upstash). | claude mcp add context7 -- npx -y @upstash/context7-mcp
+
+# ─── Data / APIs ───
+
+stripe | Stripe API: customers, payments, subscriptions. [env: STRIPE_API_KEY] | claude mcp add stripe --env STRIPE_API_KEY=$STRIPE_API_KEY -- npx -y @stripe/mcp
+airtable | Read/write Airtable bases. [env: AIRTABLE_API_KEY] | claude mcp add airtable --env AIRTABLE_API_KEY=$AIRTABLE_API_KEY -- npx -y airtable-mcp-server
+
+# ─── Notes on picking servers ───
+#
+# 1. Start with `filesystem`, `fetch`, `git`, `memory`, `github` — they cover
+#    80% of actual coding workflows.
+# 2. Add domain servers (sentry/linear/notion) only when you're actively working
+#    in that tool for a sustained stretch. Every active server inflates tool-def
+#    size in every prompt and cuts into the prompt cache.
+# 3. `memory` is interesting but double-edged — it writes state you may forget
+#    about across sessions. Review what it's retained every few weeks.
+# 4. For servers requiring tokens, store them in your shell's secret manager
+#    (not in `.claude/settings.json`). The bootstrap installer explicitly
+#    refuses to install templates containing hardcoded secrets.
