@@ -7,6 +7,7 @@ Distilled notes + reading list on Model Context Protocol.
 - [mcp-fundamentals.md](mcp-fundamentals.md) — what MCP is, stdio vs HTTP transports, tool shape
 - [building-a-server.md](building-a-server.md) — TS vs Python, when to reach for each
 - [debugging-mcp.md](debugging-mcp.md) — when servers fail to connect, stdio vs HTTP pitfalls, logs
+- [server-cards.md](server-cards.md) — forward-looking spec for `.well-known` MCP server metadata discovery (2026 roadmap)
 
 ## Reading list
 
