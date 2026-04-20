@@ -6,6 +6,7 @@ Distilled notes + reading list on Codex CLI + integration patterns.
 
 - [config-patterns.md](config-patterns.md) — key config.toml sections, sandbox modes, personality
 - [agents-md-for-codex.md](agents-md-for-codex.md) — how Codex interprets AGENTS.md vs Claude Code
+- [plugins-2026.md](plugins-2026.md) — opinionated picks from the 90+ 2026 plugins, plus what Triggers are and when to use them
 
 ## Reading list
 

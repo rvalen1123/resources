@@ -8,6 +8,10 @@
 - `claude-code/notes/monitor-tool-pattern.md` — streaming events from background processes; 4 workflow patterns (dispatch-many-monitor-each, log-tail-with-triggers, build-test-deploy chain, background-agent-with-cancel); interaction with ScheduleWakeup / TaskStop.
 - `skills/notes/skill-authoring-patterns.md` — full writeup of the 14 Anthropic skill-authoring patterns across 5 categories (Discovery, Context Economy, Instruction Calibration, Workflow Control, Executable Code). Each pattern gets a rule, a violation signal, a concrete example, and trade-offs.
 - `agent-theory/notes/memory-landscape-2026.md` — map of the 4 active agent-memory research threads (A-MEM / AgeMem / Mem0 / governance) and how they relate to the author's CT/STG-EUT work.
+- `agent-theory/notes/a-mem-and-agemem.md` — technical sketches of both memory architectures, their write-time/tool-based divergence, and how they compose with CT/MKP/STG-EUT as the governance layer.
+- `mcp/notes/server-cards.md` — forward-looking note on the upcoming `.well-known` MCP metadata spec (owned by the Server Card WG); illustrative JSON, what it changes for server authors / clients / ecosystem.
+- `codex/notes/plugins-2026.md` — opinionated picks from the 90+ 2026 Codex plugins (Sentry, Datadog, Linear/Jira, CodeRabbit, Notion, CircleCI, Render), plus a clean explanation of Triggers vs plugins and when each is right.
+- `mcp/templates/servers.txt` — curated list expanded from 11 entries to ~25, organized by category (reference / SCM / databases / browsers / dev tooling / cloud / productivity / search / APIs) with env-var callouts for auth and usage guidance.
 
 ### Updated — reading lists
 - `claude-code/notes/README.md` — adds official changelog + community deep-dives for April 2026 releases.

@@ -8,6 +8,7 @@ Conceptual notes on agent architecture — the ideas beneath whatever tool you'r
 - [multi-agent-orchestration.md](multi-agent-orchestration.md) — when to split work across agents vs keep it single
 - [memory-systems.md](memory-systems.md) — short / working / long-term; explicit vs implicit recall
 - [memory-landscape-2026.md](memory-landscape-2026.md) — 2025–2026 agent-memory research landscape and how it maps to the author's CT / STG-EUT framing
+- [a-mem-and-agemem.md](a-mem-and-agemem.md) — deeper technical sketches of A-MEM (Zettelkasten-inspired) and AgeMem (memory-ops-as-tools), their differences, and how they compose with CT/MKP/STG-EUT
 - [rag-patterns.md](rag-patterns.md) — retrieval-augmented generation: when to RAG, when to fine-tune, when to prompt-stuff
 - [evaluating-agents.md](evaluating-agents.md) — how to know if your agent is actually good
 
