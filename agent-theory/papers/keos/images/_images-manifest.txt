@@ -1,0 +1,3 @@
+page	file	bytes
+4	page-04-img-01.png	612989
+6	page-06-img-01.png	280028

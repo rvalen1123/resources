@@ -1,0 +1,10 @@
+page	file	bytes
+1	page-01-img-01.jpg	219638
+2	page-02-img-01.jpeg	357926
+4	page-04-img-01.jpeg	389693
+5	page-05-img-01.jpeg	365921
+6	page-06-img-01.jpeg	315491
+7	page-07-img-01.jpeg	367951
+7	page-07-img-02.jpeg	345024
+8	page-08-img-01.jpeg	278261
+9	page-09-img-01.jpeg	642723

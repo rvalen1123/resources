@@ -23,3 +23,7 @@ docs/
 # Local Claude Code project state (this repo is a library, not a CC-using project)
 .claude/
 
+# Python bytecode cache (from mcp/templates/server-python/ if run locally)
+__pycache__/
+*.pyc
+
