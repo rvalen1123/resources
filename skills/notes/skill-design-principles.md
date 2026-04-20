@@ -66,6 +66,35 @@ fires or fires at the wrong time. Both are failure modes.
 Write the description *last*, after the body stabilizes. You'll know
 what the skill actually does by then.
 
+### Be pushy (Claude under-triggers)
+
+Per Anthropic's own skill authoring guidance, Claude tends to
+**under-trigger** skills — err on the side of a description that is
+aggressive about when to fire, not conservative. If you write "Use when
+the user asks for branded Word documents," the skill might not fire on
+"Can you make me a memo for Acme?" because the phrasing didn't include
+"branded Word documents." A pushier description — "Use when creating any
+`.docx` for a company, especially memos / reports / proposals /
+one-pagers / proposals, or any deliverable destined for physician /
+partner / investor audiences" — catches more of the real space.
+
+Rule of thumb: enumerate the **triggering phrases and audiences** the
+user will actually use, not just the abstract task type.
+
+### Rule + rationale beats ALL CAPS MUST
+
+Another pattern from the Anthropic best-practices essay: instead of
+a naked command, give the command *and the reason behind it*. Claude
+generalizes better when it knows *why* the rule exists.
+
+- ❌ "MUST use constructor injection. NEVER use field injection."
+- ✅ "Use constructor injection. Field injection breaks testability
+  because mocks can't be passed in at construction time."
+
+The rationale lets Claude handle edge cases you didn't anticipate. A
+pure imperative forces the model to treat the rule as a black box and
+apply it literally even when it shouldn't.
+
 ## Body structure
 
 A consistent shape for the SKILL.md body:
