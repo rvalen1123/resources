@@ -21,13 +21,17 @@ note the takeaway next to it.
 ### Official
 
 - [Claude Code skills docs](https://docs.anthropic.com/en/docs/claude-code/skills) — start here. Covers the file layout, frontmatter fields, and discovery rules.
+- [Agent Skills docs (platform)](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) — Skills for the API / Managed Agents side.
+- [Skill authoring best practices (official)](https://anthropic.mintlify.app/en/docs/agents-and-tools/agent-skills/best-practices) — canonical dos and don'ts. Read this at least once before shipping a skill.
 - [skill-creator skill](https://docs.anthropic.com/en/docs/claude-code/skills#skill-creator) — canonical authoring tool. Use it to scaffold rather than hand-rolling the directory structure.
-- [Anthropic engineering blog: agent skills](https://www.anthropic.com/engineering) — skim for the "why" behind the design.
+- [Anthropic: Equipping agents with Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) — engineering post explaining the Skills abstraction and where it shines.
+- [anthropics/skills on GitHub](https://github.com/anthropics/skills) — the official public Skills repo.
 
 ### Community
 
-- [ ] <url> — <why>
-- [ ] <url> — <why>
+- [Skill authoring patterns from Anthropic's best practices (Generative Programmer)](https://generativeprogrammer.com/p/skill-authoring-patterns-from-anthropics) — compressed summary of the 14 patterns across 5 categories (discovery/selection, context economy, instruction calibration, workflow control, executable code). Highest-signal community writeup.
+- [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) — 1000+ community + official skills, cross-compatible with Claude Code, Codex, Gemini CLI, Cursor.
+- [skillmatic-ai/awesome-agent-skills](https://github.com/skillmatic-ai/awesome-agent-skills) — alternate curated list; different selection bias.
 - [ ] <url> — <why>
 
 ### Internal references (skills/templates/)

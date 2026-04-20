@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-04-20
+
+### Added — bleeding-edge Q1-Q2 2026 sweep
+- `claude-code/notes/claude-code-2026-features.md` — Q1-Q2 2026 changelog highlights: Opus 4.7 + `xhigh`, `/recap`, `/tui`, Monitor tool, subprocess sandboxing, MCP 500K result size override, built-in-slash-command invocation via the Skill tool.
+- `agent-theory/notes/memory-landscape-2026.md` — map of the 4 active agent-memory research threads (A-MEM / AgeMem / Mem0 / governance) and how they relate to the author's CT/STG-EUT work.
+
+### Updated — reading lists
+- `claude-code/notes/README.md` — adds official changelog + community deep-dives for April 2026 releases.
+- `mcp/notes/README.md` — adds Official MCP Registry, 2026 roadmap, and The New Stack commentary on production pain points.
+- `agent-theory/notes/README.md` — adds 6 recent agent-memory papers (A-MEM 2502.12110, AgeMem 2601.01885, Memory survey 2512.13564, Mem0 2504.19413, personalized-LTM 2510.07925, experience-following 2505.16067) plus the Agent-Memory-Paper-List bibliography.
+- `codex/notes/README.md` — adds GPT-5.4 / Codex-Spark / 90+ plugins / Triggers / FS-aware AGENTS.md; adds a "2026 features at a glance" section.
+- `skills/notes/README.md` — adds skill-authoring best-practices essays (Generative Programmer, Anthropic engineering), awesome-agent-skills (VoltAgent + skillmatic-ai).
+- `skills/notes/skill-design-principles.md` — new subsections "Be pushy (Claude under-triggers)" and "Rule + rationale beats ALL CAPS MUST" per Anthropic's skill authoring patterns.
+
 ## 2026-04-19
 
 ### Added — research papers
