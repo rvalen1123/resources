@@ -49,4 +49,4 @@ Every topic (except `agent-theory/`, which is notes-only) follows:
 
 ## License
 
-Personal library. No license specified — treat as all-rights-reserved by default. If you stumbled across this and want to use something, ask.
+MIT
